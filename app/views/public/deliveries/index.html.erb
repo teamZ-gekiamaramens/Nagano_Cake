@@ -1,0 +1,35 @@
+<h2>配送先登録/一覧</h2>
+
+<table class="table">
+  <tbody>
+  <%= form_with model:@deliverie, url: public_deliveries_path,local:true do |f| %>
+   <tr>
+     <td>
+     郵便番号（ハイフンなし）
+     <%= f.text_area :postal_code ,size: "30x1" %>
+     </td>
+   </tr>
+   <tr>
+     <td>
+     住所
+     <%= f.text_field :address %>
+     </td>
+   </tr>
+   <tr>
+     <td>
+     宛名
+     <%= f.text_field :name %>
+     </td>
+     <td>
+       <%= f.submit '新規登録' %>
+     </td>
+   </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<% @deliveries.each do |deliverie| %>
+ <%= deliverie.postal_code %>
+ <%= deliverie.address %>
+ <%= deliverie.name %>
+<% end %>
