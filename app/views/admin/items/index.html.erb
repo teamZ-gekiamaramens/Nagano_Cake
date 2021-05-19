@@ -1,0 +1,28 @@
+<div class="title">
+    <h2>商品一覧</h2>
+</div>
+<div class="add-item">
+    <%= link_to '',new_admin_item_path, class: "fal fa-plus-circle" %>
+</div>
+<table class="item-table">
+    <thead>
+        <th>商品ID</th>
+        <th>商品名</th>
+        <th>税抜価格</th>
+        <th>ジャンル</th>
+        <th>ステータス</th>
+    </thead>
+    <tbody>
+        <% @items.each do |item| %>
+            <td><%= item.id %></td>
+            <td>
+                <%= link_to admin_item_path(item.name) do %>
+                    <%= attachment_image_tag item.name, :image_id, :fill, 200, 300, fallback: "no_image.jpg" %>
+                <% end %>
+            </td>
+            <td><%= item.price %></td>
+            <td><%= item.genre %></td>
+            <td><%= item.status %></td>
+        <% end %>
+    </tbody>
+</table>

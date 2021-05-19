@@ -1,0 +1,34 @@
+<h3>商品詳細</h3>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4">
+            <!--%= attachment_image_tag(@item) %-->
+        </div>
+        <div class="col-lg-8">
+            <table class="item-table">
+                <% items.each do |item| %>
+                <tr>
+                    <td>商品名</td>
+                    <td><%= item.name %></td>
+                </tr>
+                <tr>
+                    <td>商品説明</td>
+                    <td><%= item.introduction %></td>
+                </tr>
+                <tr>
+                    <td>税込価格<br />(税抜価格)</td>
+                    <td>(<%= item.price %>)円</td><!--税込み価格を記載のこと-->
+                </tr>
+                <tr><!--個数選択:プルダウンメニュー-->
+                    <td>
+                        <%= item.select :quantity, [1,2,3,4,5,6,7,8,9] %>
+                    </td>
+                </tr>
+                <% end %>
+            </table>
+        </div>
+        <div class="item-decide">
+            <%= link_to 'カートに入れる', index_path, class: "btn-btn " %><!--カートアイテムのpathに飛ぶようにする-->
+        </div>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+<div class="item-introduction">
+    <h2>商品一覧</h2>
+    <p>全<%= item.count %>件</p>
+</div>
+
+<div class="item-list">
+    <%= @items.each do |item| %>
+        <div class="item-link">
+            <%= item.attachment_image_tag, :image_id, :fill, 200, 300, fallback: "no_image.jpg" %><br />
+            <%= item.name %><br />
+            <%= item.price %>
+        </div>
+    <% end %>
+</div>
+
+
