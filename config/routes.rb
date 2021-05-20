@@ -1,3 +1,12 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  devise_for :customers
+   namespace :public do
+   resources :customers, only: [:show,:update,:index] do
+       collection do
+        get :edit
+        get 'unsubscribe'
+        patch "withdrawal"
+       end
+   end
+ end
 end
