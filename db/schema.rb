@@ -41,5 +41,26 @@ ActiveRecord::Schema.define(version: 2021_05_18_142529) do
     t.index ["email"], name: "index_customers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end
+    create_table "deliveries", force: :cascade do |t|
+    t.integer "customer_id"
+    t.string "name"
+    t.string "address"
+    t.string "postal_code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "orderes", force: :cascade do |t|
+    t.integer "customer_id"
+    t.string "postal_code"
+    t.string "name"
+    t.string "address"
+    t.integer "shipping"
+    t.integer "total"
+    t.integer "payment"
+    t.integer "order_status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
 end
