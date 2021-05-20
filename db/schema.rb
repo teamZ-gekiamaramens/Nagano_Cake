@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_19_005115) do
+ActiveRecord::Schema.define(version: 2021_05_20_045254) do
 
   create_table "genres", force: :cascade do |t|
     t.string "name"
@@ -25,10 +25,11 @@ ActiveRecord::Schema.define(version: 2021_05_19_005115) do
     t.string "image_id"
     t.text "introduction"
     t.integer "price"
-    t.boolean "is_active"
+    t.boolean "is_active", default: true
     t.datetime "created_at", null: false
     t.datetime "update_at"
     t.datetime "updated_at", null: false
+    t.integer "genre_id"
   end
 
 end

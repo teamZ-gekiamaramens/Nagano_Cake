@@ -2,36 +2,35 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-4">
-            <!--%= attachment_image_tag(@item) %-->
+            <%= attachment_image_tag @item, :image, :fill, 500, 600,fallback: "no_image.jpg" %>
         </div>
         <div class="col-lg-8">
             <table class="item-table">
-                <% items.each do |item| %>
                 <tr>
                     <td>商品名</td>
-                    <td><%= item.name %></td>
+                    <td><%= @item.name %></td>
                 </tr>
                 <tr>
                     <td>商品説明</td>
-                    <td><%= item.introduction %></td>
+                    <td><%= @item.introduction %></td>
                 </tr>
                 <tr>
                     <td>ジャンル</td>
-                    <td><%= item.genre %></td>
+                    <td><%= @item.genre.name %></td>
                 </tr>
                 <tr>
                     <td>税込価格<br />(税抜価格)</td>
-                    <td>(<%= item.price %>)円</td><!--税込み価格を記載のこと-->
+                    <td><%= (@item.price*1.1).floor %>(<%= @item.price %>)円</td><!--税込み価格を記載のこと-->
                 </tr>
                 <tr>
                     <td>販売ステータス</td>
-                    <td><%= item.status %></td>
+                    <td><%= @item.is_active %></td>
                 </tr>
-                <% end %>
+
             </table>
         </div>
         <div class="item-decide">
-            <%= link_to '編集する', edit_admin_item(item.id), class: "btn-btn " %>
+            <%= link_to '編集する', edit_admin_item_path(@item.id), class: "btn-btn success" %>
         </div>
     </div>
 </div>
