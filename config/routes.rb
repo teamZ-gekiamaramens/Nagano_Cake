@@ -9,7 +9,7 @@ Rails.application.routes.draw do
        end
    end
  end
- 
+
  devise_for :admins, controllers: {
   sessions: 'admin/sessions'
 }
