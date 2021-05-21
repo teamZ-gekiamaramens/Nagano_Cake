@@ -1,7 +1,10 @@
-<h3>商品詳細</h3>
+
 <div class="container">
     <div class="row">
         <div class="col-lg-4">
+            <div class="title">
+                <h3>商品詳細</h3>
+            </div>
             <%= attachment_image_tag @item, :image, :fill, 200, 300, fallback: "no_image.jpg" %>
         </div>
         <div class="col-lg-8">
@@ -11,7 +14,7 @@
             <%= item.select :quantity, [1,2,3,4,5,6,7,8,9] %>
             
         <div class="item-decide">
-            <%= link_to 'カートに入れる', items_path, class: "btn-btn " %>
+            <%= link_to 'カートに入れる', items_path, class: "btn btn-success", style: "text-align:center" %>
             <!--カートアイテムのpathに飛ぶようにする。(5/20時点では商品リストに飛ぶ)-->
         </div>
     </div>
