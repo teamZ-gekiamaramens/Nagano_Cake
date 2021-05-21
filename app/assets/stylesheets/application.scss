@@ -16,3 +16,18 @@
 @import "bootstrap";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
+
+.title {
+    display: inline-block;
+    margin: 10px;
+    padding: 0, 30px;
+    background-color: #eeeeee;
+}
+.new-genre{
+    display: inline-block;
+    margin: 30px;
+}
+
+.add-item{
+    float: right;
+}
