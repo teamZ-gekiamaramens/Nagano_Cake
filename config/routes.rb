@@ -23,16 +23,16 @@ Rails.application.routes.draw do
  namespace :public do
   resources :deliveries, only: [:create, :index, :edit, :update, :destroy]
   get 'about' => 'homes#about'
+   resources :items, only: [:index, :show]
  end
  root to: 'public/homes#top'
    # 会員側のルーティング設定
-  get 'items' => 'public/items#index'
-  get '/items/:id' => 'public/items#show'
+
   # 管理者側のルーティング設定
   namespace :admin do
     resources :items, only: [:index, :show, :new, :create, :edit, :update]
     resources :genre, only: [:index, :edit, :create, :update]
   end
-    
+
 end
 
