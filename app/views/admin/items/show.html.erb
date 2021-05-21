@@ -3,9 +3,9 @@
     <div class="title">
         <h3>商品詳細</h3>
     </div>
-    
+
     <div class="row">
-        
+
         <div class="col-lg-4">
             <%= attachment_image_tag @item, :image, width:"400" ,fallback: "no_image.jpg" %>
         </div>
@@ -21,7 +21,7 @@
                 </tr>
                 <tr>
                     <td>ジャンル</td>
-                    <td><%= @item.genre.name %></td>
+                    <td><%= @item.genre.name%></td>
                 </tr>
                 <tr>
                     <td>税込価格<br />(税抜価格)</td>
