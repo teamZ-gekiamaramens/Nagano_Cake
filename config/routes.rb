@@ -33,6 +33,17 @@ Rails.application.routes.draw do
     resources :items, only: [:index, :show, :new, :create, :edit, :update]
     resources :genre, only: [:index, :edit, :create, :update]
   end
-    
+
+  namespace :public do
+  resources :orders, only:[:new, :create, :index, :show]
+  get 'thanks' => 'orders#thanks'
+  get 'log' => 'orders#log'
+
+  end
+
+  namespace :admin do
+  resources :orders, only:[:show, :update]
+  end
+
 end
 

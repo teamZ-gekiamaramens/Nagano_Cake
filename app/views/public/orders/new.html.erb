@@ -1,0 +1,11 @@
+<%= form_with model: @order, url:public_log_path, class: "offset-md-1", local: true do |f| %>
+  <h2 class="ml-4"><strong>注文情報入力</strong></h2>
+   <strong>支払方法</strong>
+   <div class="col-xs-10 radio ml-3">
+    <%= f.radio_button :payment, :"クレジットカード", checked: true %>
+    <span>&nbspクレジットカード</span>
+   </div>
+   <div class="col-xs-10 radio ml-3 mb-3">
+    <%= f.radio_button :payment, :"銀行振込" %>
+    <span>&nbsp銀行振込</span>
+   </div>

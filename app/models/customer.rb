@@ -3,8 +3,8 @@ class Customer < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-
-
+  has_many :deliveri
+  has_many :orders
     def active_for_authentication?
         super && (self.withdrawal == false)
     end
