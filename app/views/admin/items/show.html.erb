@@ -1,11 +1,16 @@
-<h3>商品詳細</h3>
+
 <div class="container">
+    <div class="title">
+        <h3>商品詳細</h3>
+    </div>
+    
     <div class="row">
+        
         <div class="col-lg-4">
-            <%= attachment_image_tag @item, :image, :fill, 500, 600,fallback: "no_image.jpg" %>
+            <%= attachment_image_tag @item, :image, width:"400" ,fallback: "no_image.jpg" %>
         </div>
         <div class="col-lg-8">
-            <table class="item-table">
+            <table class="item-table" style>
                 <tr>
                     <td>商品名</td>
                     <td><%= @item.name %></td>
@@ -30,7 +35,7 @@
             </table>
         </div>
         <div class="item-decide">
-            <%= link_to '編集する', edit_admin_item_path(@item.id), class: "btn-btn success" %>
+            <%= link_to '編集する', edit_admin_item_path(@item.id), class: "btn btn-success" %>
         </div>
     </div>
 </div>
