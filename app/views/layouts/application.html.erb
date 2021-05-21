@@ -31,7 +31,7 @@
           <li class="nav-item">商品一覧.</li>
           <li class="nav-item">会員一覧.</li>
           <li class="nav-item">注文履歴一覧.</li>
-          <li class="nav-item">ジャンル一覧.</li>
+          <li class="nav-item"><%= link_to "ジャンル一覧", public_about_path %></li>
           <li class="nav-item"><%= link_to "ログアウト.", destroy_admin_session_path, method: :delete %></li>
         <% else %>
           <li class="nav-item"><%= link_to "About.", public_about_path %></li>
