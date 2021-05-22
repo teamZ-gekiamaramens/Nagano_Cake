@@ -1,9 +1,9 @@
 <h2>ログイン</h2>
+<%= form_with model: @customer, url: customer_session_path, local: true do |f| %>
 <table>
 <tr>
 <td><h5>会員の方はこちらからログイン</h5><td>
 <tr>
-<%= form_with model: @customer, url: customer_session_path, local: true do |f| %>
 <tr>
   <div class="field">
    <td><%= f.label :"メールアドレス" %></td>
@@ -23,10 +23,11 @@
     </div>
   <% end %>
 
+</table>
+
   <div class="actions">
     <%= f.submit "ログイン" %>
   </div>
-</table>
 <% end %>
 
 <%= render "devise/shared/links" %>

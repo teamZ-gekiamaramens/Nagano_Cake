@@ -1,16 +1,23 @@
-<div class="item-introduction">
-    <h2>商品一覧</h2>
-    <p>全<%#= item.count %>件</p>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="item-introduction">
+                <h2>商品一覧</h2>
+                <p>全<%= @quantity %>件</p>
+            </div>
+            <div class="item-list">
+                <% @items.each do |item| %>
+                    <div class="item-link">
+                        <%= attachment_image_tag item, :image, width:"400", fallback: "no_image.jpg" %><br />
+                        <%= link_to item.name, public_item_path(item.id) %><br />
+                        <p>¥<%= (item.price*1.1).floor %></p><br /><!--税抜き価格に10%付加-->
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
 </div>
 
-<div class="item-list">
-    <% @items.each do |item| %>
-        <div class="item-link">
-            <%= attachment_image_tag item, :image, :fill, 200, 300, fallback: "no_image.jpg" %><br />
-            <p><%= link_to item.name, items_path(item.id) %></p><br />
-            <p>¥<%= (item.price*1.1).floor %></p><br /><!--税抜き価格に10%付加-->
-        </div>
-    <% end %>
-</div>
+
 
 
