@@ -1,4 +1,6 @@
-class Ordere < ApplicationRecord
+class Order < ApplicationRecord
+
+belongs_to :customer
 
   enum payment: {
     クレジットカード: 0,
