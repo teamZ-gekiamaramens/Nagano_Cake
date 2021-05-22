@@ -34,5 +34,14 @@ Rails.application.routes.draw do
     resources :genre, only: [:index, :edit, :create, :update]
   end
 
+ namespace :public do
+     resources :orders, only: [:index, :show, :new, :create]
+     get 'log' => 'public/orders#log'
+     get 'thanks' => 'public/orders#thanks'
+    end
+
+   namespace :admin do
+     resources :orders, only: [:show, :update]
+   end
 end
 
