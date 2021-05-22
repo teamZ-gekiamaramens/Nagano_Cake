@@ -2,8 +2,13 @@ class Public::DeliveriesController < ApplicationController
 
   def create
     @deliverie = Deliverie.new(deliverie_params)
-    @deliverie.save
-    redirect_to public_deliveries_path
+    if @deliverie.save
+     redirect_to public_deliveries_path
+    else
+      @deliveries = Deliverie.all
+      flash[:notice] = '配送先情報を入力してください'
+      render :index
+    end
   end
 
   def index
