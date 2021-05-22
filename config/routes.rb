@@ -1,5 +1,14 @@
 Rails.application.routes.draw do
 
+#public/cart_itemのアクションを追加した===================================
+  namespace :public do
+    resources :cart_items, only: [:index, :create, :update, :destroy] do
+        collection do
+            delete 'destroy_all'
+        end
+    end
+  end
+  #=======================================================================
   devise_for :customers
    namespace :public do
    resources :customers, only: [:show,:update,:index] do
