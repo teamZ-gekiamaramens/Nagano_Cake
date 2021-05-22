@@ -6,7 +6,7 @@ class Public::DeliveriesController < ApplicationController
      redirect_to public_deliveries_path
     else
       @deliveries = Deliverie.all
-      flash[:notice] = '配送先情報を入力してください'
+      flash[:notice] = '配送先情報を入力してください!'
       render :index
     end
   end
