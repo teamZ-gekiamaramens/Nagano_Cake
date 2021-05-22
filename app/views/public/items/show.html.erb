@@ -14,8 +14,13 @@
             <%#= @item.select :quantity, [1,2,3,4,5,6,7,8,9] %>
 
         <div class="item-decide">
-            <%= link_to 'カートに入れる', class: "btn btn-success", style: "text-align:center" %>
-            <!--カートアイテムのpathに飛ぶようにする。(5/20時点では商品リストに飛ぶ)-->
+            <%= form_with model:@cart_item, url:public_cart_items_path, local: true do |f| %>
+                <%= f.hidden_field :item_id, :value => @item.id %>
+                <%#hidden_field : 隠れているが必要な要素を送信するための %>
+                <%= f.select :amount, (1..9).to_a ,{include_blank: '-個数を選択して下さい-'}  %>
+                <%= f.submit 'カートに入れる', class: "btn btn-success" %>
+                <!--カートアイテムのpathに飛ぶようにする。(5/20時点では商品リストに飛ぶ)-->
+            <% end %>
         </div>
     </div>
 </div>
