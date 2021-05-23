@@ -13,39 +13,36 @@ class Public::OrdersController < ApplicationController
     redirect_to public_log_path(@order.id)
     end
 
-    def log
-     @cart_item = CartItem.where(customer_id: current_customer.id)
-     #where(AA:BB)はAAで指定したカラムでBBで一致した情報を@cart_itemに格納する
-     @shipping = 800
-     @all_total = @shipping + @total_price
-
-    end
-
     def thanks
     end
 
     def log
-     @order = Order.new
-     if params[:order][:address] == 0
-       @order.address_number = current_customer.address_number
-       @order.address = current_customer.address
-       @order.last_name = current_customer.last_name
-     elsif params[:order][:address] == 1
-       delivery = Deliver_Address.find(params[:order][:deliver_id])
-       @order.address_number = delivery.address_number
-       @order.address = delivery.address
-       @order.destination = delivery.destination
-     elsif params[:order][:address] == 2
-       @order.postcode = params[:order][:postal_code]
-       @order.address = params[:order][:address]
-       @order.destination = params[:order][:destination]
-     end
+     @cart_item = CartItem.where(customer_id: current_customer.id)
+     #where(AA:BB)はAAで指定したカラムでBBで一致した情報を@cart_itemに格納する
+     @order = Order.new(order_params)
+     @cart_items = current_customer.cart_items                     # カートアイテム呼び出し
+     @total_price = @cart_items.sum{|cart_item|cart_item.item.price * cart_item.amount * 1.1 }
+    if params[:order][:address_option] == "0"
+        @order.address = current_customer.address
+        @order.postal_code = current_customer.address_number
+        @order.name = current_customer.last_name + current_customer.first_name
+
+    elsif params[:order][:address_option] == "1"
+        @address = Delivery.find(params[:order][:delivery_id])
+        @order.address = @address.address
+        @order.name = @address.name
+        @order.postal_code = @address.postal_code
+
+
+    end
+
     end
 
 
     private
 
     def order_params
-     params.require(:order).permit(:name, :address, :postal_code,:payment,:total,:shipping)
+     params.require(:order).permit(:name, :address, :postal_code, :payment, :customer_id, :shipping, :total)
+
     end
 end
