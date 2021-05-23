@@ -12,15 +12,15 @@ class Public::OrdersController < ApplicationController
     @delivery.save
     redirect_to public_log_path(@order.id)
     end
-    
+
     def log
      @cart_item = CartItem.where(customer_id: current_customer.id)
      #where(AA:BB)はAAで指定したカラムでBBで一致した情報を@cart_itemに格納する
      @shipping = 800
      @all_total = @shipping + @total_price
-     
+
     end
-    
+
     def thanks
     end
 
@@ -35,6 +35,10 @@ class Public::OrdersController < ApplicationController
        @order.address_number = delivery.address_number
        @order.address = delivery.address
        @order.destination = delivery.destination
+     elsif params[:order][:address] == 2
+       @order.postcode = params[:order][:postal_code]
+       @order.address = params[:order][:address]
+       @order.destination = params[:order][:destination]
      end
     end
 

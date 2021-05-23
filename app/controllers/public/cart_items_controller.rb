@@ -3,7 +3,7 @@ class Public::CartItemsController < ApplicationController
     @cart_items = CartItem.where(customer_id: current_customer.id)
     @total_price = @cart_items.sum{|cart_item|cart_item.item.price * cart_item.amount * 1.1 }
   end
-  
+
   def create
     @cart_item = CartItem.new(cart_item_params)
     #カートアイテムの初期化
@@ -25,28 +25,28 @@ class Public::CartItemsController < ApplicationController
     end
     redirect_to public_cart_items_path
   end
-  
+
   # 1.submitしてshowページのデータを送信
   # 2.空のインスタンスを用意 cartitem.new
   # 3.受け取った情報を空のインスタンスに代入する
-  
+
    # A(同じ商品がなかった場合...)
   # 4-A.カートアイテムの外部キーを設定する
   # 5-A.saveする。
-  
+
    # B(同じ商品があった場合...)
   # 4-B.元々の有った商品の個数を加算する
   # 5-B.update
-  
+
   # 6.リダイレクト。
-  
+
   def update
     @cart_item = CartItem.find(params[:id])
     @cart_item.update(cart_item_params)
     redirect_to public_cart_items_path
   end
 
-  
+
   def destroy
     @cart_item = CartItem.find(params[:id])
     @cart_item.destroy
@@ -60,10 +60,10 @@ class Public::CartItemsController < ApplicationController
     flash[:alert] = "カート内の商品を全て削除しました。"
     redirect_to public_cart_items_path
   end
-  
+
   private
   def cart_item_params
     params.require(:cart_item).permit(:amount, :item_id, :customer_id)
   end
-  
+
 end
