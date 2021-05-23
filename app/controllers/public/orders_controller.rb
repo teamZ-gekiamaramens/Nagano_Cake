@@ -12,6 +12,17 @@ class Public::OrdersController < ApplicationController
     @delivery.save
     redirect_to public_log_path(@order.id)
     end
+    
+    def log
+     @cart_item = CartItem.where(customer_id: current_customer.id)
+     #where(AA:BB)はAAで指定したカラムでBBで一致した情報を@cart_itemに格納する
+     @shipping = 800
+     @all_total = @shipping + @total_price
+     
+    end
+    
+    def thanks
+    end
 
     def log
      @order = Order.new
