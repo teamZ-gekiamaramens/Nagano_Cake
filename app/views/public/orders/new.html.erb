@@ -22,8 +22,8 @@
     <%= f.radio_button :address,  "registration"%>
     <span>&nbsp登録済住所から選択</span><br>
     <%= f.select :delivery_id, @delivery_address.map{|delivery|["〒"+delivery.postal_code + " " + delivery.address + " " + delivery.name, delivery.id]} %>
-   </div>
-   <%= f.radio_button :address,  "registration"%>
-   <span>&nbsp&nbsp新しい連絡先</span>
+    </div>
+    <%= f.radio_button :address,  "registration"%>
+    <span>&nbsp&nbsp新しい連絡先</span>
   
  <%end%>
