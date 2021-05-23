@@ -13,6 +13,7 @@ class Public::OrdersController < ApplicationController
     redirect_to public_log_path(@order.id)
     end
 
+
     def thanks
     end
 
