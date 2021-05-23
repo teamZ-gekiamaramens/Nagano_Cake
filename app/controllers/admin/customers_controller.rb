@@ -2,7 +2,7 @@ class Admin::CustomersController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-
+  	@customers = Customer.page(params[:page]).per(10)
   end
 
 	def show
@@ -29,13 +29,13 @@ class Admin::CustomersController < ApplicationController
 	  params.require(:customer).permit(
 	  	:first_name,
 	  	:last_name,
-	  	:kana_first_name,
-	  	:kana_last_name,
-	  	:postal_code,
-	  	:street_address,
+	  	:first_name_kana,
+	  	:last_name_kana,
+	  	:address,
+	  	:address_number,
 	  	:phone_number,
 	  	:email,
-	  	:is_valid)
+	  	:withdrawal)
 	end
 end
 
