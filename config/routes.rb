@@ -45,8 +45,8 @@ Rails.application.routes.draw do
 
  namespace :public do
      resources :orders, only: [:index, :show, :new, :create]
-     get 'log' => 'public/orders#log'
-     get 'thanks' => 'public/orders#thanks'
+     get 'log' => 'orders#log'
+     get 'thanks' => 'orders#thanks'
     end
 
    namespace :admin do
