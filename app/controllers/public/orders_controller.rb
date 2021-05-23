@@ -16,32 +16,21 @@ class Public::OrdersController < ApplicationController
     def log
      @cart_item = CartItem.where(customer_id: current_customer.id)
      #where(AA:BB)はAAで指定したカラムでBBで一致した情報を@cart_itemに格納する
-     @shipping = 800
-     @all_total = @shipping + @total_price
-     
+     @order = Order.new(order_params)
+     @cart_items = current_customer.cart_items                     # カートアイテム呼び出し
+     @total_price = @cart_items.sum{|cart_item|cart_item.item.price * cart_item.amount * 1.1 }
     end
     
     def thanks
     end
 
-    def log
-     @order = Order.new
-     if params[:order][:address] == 0
-       @order.address_number = current_customer.address_number
-       @order.address = current_customer.address
-       @order.last_name = current_customer.last_name
-     elsif params[:order][:address] == 1
-       delivery = Deliver_Address.find(params[:order][:deliver_id])
-       @order.address_number = delivery.address_number
-       @order.address = delivery.address
-       @order.destination = delivery.destination
-     end
-    end
-
-
     private
 
     def order_params
-     params.require(:order).permit(:name, :address, :postal_code,:payment,:total,:shipping)
+     params.permit(:name, :address, :postal_code, :payment, :total, :shipping)
+    end
+    
+    def cart_item_params
+     params.require(:cart_item).permit(:amount, :item_id, :customer_id)
     end
 end
