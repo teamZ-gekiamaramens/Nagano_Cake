@@ -1,11 +1,12 @@
 
 <div class="container">
+    <div class="title">
+        <h3>商品詳細</h3>
+</div>
     <div class="row">
         <div class="col-lg-4">
-            <div class="title">
-                <h3>商品詳細</h3>
-            </div>
-            <%= attachment_image_tag @item, :image, :fill, 200, 300, fallback: "no_image.jpg" %>
+            
+            <%= attachment_image_tag @item, :image, width:"200", fallback: "no_image.jpg" %>
         </div>
         <div class="col-lg-8">
             <h3><%= @item.name %></h3>
