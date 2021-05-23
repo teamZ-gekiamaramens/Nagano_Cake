@@ -30,4 +30,7 @@ class Public::OrdersController < ApplicationController
      params.permit(:name, :address, :postal_code, :payment, :total, :shipping)
     end
     
+    def cart_item_params
+     params.require(:cart_item).permit(:amount, :item_id, :customer_id)
+    end
 end
