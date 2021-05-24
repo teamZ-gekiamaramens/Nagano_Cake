@@ -2,15 +2,15 @@
   <div class="row col-5 text-align:center">会員情報変更画面</div>
     <%= form_with(model:@customer, url:public_customer_path(@customer), local: true ,method: :put) do |f| %>
       <div class="row my-3">
-       <%= f.label :"氏名", class: "control-label col-2" %>
+         <%= f.label :"氏名", class: "control-label col-2" %>
        <%= f.text_field :last_name, class: "form-control-static col-4 " %>
        <%= f.text_field :first_name, class: "form-control-static col-4 " %>
-</div>
+     </div>
       <div class="row my-3">
-<%= f.label :"フリガナ", class: "control-label" %>
-<%= f.text_field :last_name_kana, class: "kana_last_name  form-control-static name" %>
-<%= f.text_field :first_name_kana, class: "kana_first_name  form-control-static name" %>
-</div>
+      <%= f.label :"フリガナ", class: "control-label col-2" %>
+      <%= f.text_field :last_name_kana, class: "kana_last_name  form-control-static name" %>
+      <%= f.text_field :first_name_kana, class: "kana_first_name  form-control-static name" %>
+     </div>
       <div class="row my-3">
 <%= f.label :"郵便番号", class: "control-label" %>
 <%= f.text_field :address_number, autofocus: true, autocomplete: "address_number", class: "form-control-static" %>
