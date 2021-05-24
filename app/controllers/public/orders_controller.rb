@@ -1,33 +1,32 @@
 class Public::OrdersController < ApplicationController
-
-    def new
+  
+  def new
      @order = Order.new
      @customer = current_customer
      @delivery_address = @customer.deliveries
      @delivery = Delivery.new
-    end
+  end
 
-    def create
+  def create
     order = current_customer.orders.new(order_params)
     order.save
-
     cart_items = current_customer.cart_items
     cart_items.each do |cart_item|
       order_detail = OrderDetail.new
       order_detail.quantity = cart_item.amount
       order_detail.price = cart_item.item.price*1.1*cart_item.amount
-    order_detail.order_id = order.id
-    order_detail.item_id = cart_item.item.id
-    order_detail.save
+      order_detail.order_id = order.id
+      order_detail.item_id = cart_item.item.id
+      order_detail.save
     end
     cart_items.destroy_all
     redirect_to public_thanks_path
-    end
+  end
 
-    def thanks
-    end
+  def thanks
+  end
 
-    def log
+  def log
      @order = Order.new(order_params)
      @cart_item = CartItem.where(customer_id: current_customer.id)
      #where(AA:BB)はAAで指定したカラムでBBで一致した情報を@cart_itemに格納する
@@ -55,11 +54,10 @@ class Public::OrdersController < ApplicationController
        @order.postal_code = @delivery.postal_code
     end
 
-    end
+  end
 
 
-    private
-
+  private
     def order_params
      params.require(:order).permit(:name, :address, :postal_code, :payment, :customer_id, :shipping, :total)
     end

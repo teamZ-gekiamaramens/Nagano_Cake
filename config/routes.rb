@@ -45,6 +45,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :items, only: [:index, :show, :new, :create, :edit, :update]
     resources :genre, only: [:index, :edit, :create, :update]
+    resources :order_details, only: [:update]
   end
 
  namespace :public do
