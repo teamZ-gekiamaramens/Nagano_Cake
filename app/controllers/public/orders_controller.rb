@@ -54,7 +54,15 @@ class Public::OrdersController < ApplicationController
        @order.postal_code = @delivery.postal_code
     end
 
-  end
+
+
+    def index
+      @orders = current_customer.orders
+    end
+
+    def show
+      @order = Order.find(params[:id])
+    end
 
 
   private
