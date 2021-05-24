@@ -4,7 +4,7 @@
             <div class="title">
                 <h2>商品一覧</h2>
             </div>
-            <div class="add-item">
+            <div class="add-item" style="display:right">
                 <%= link_to '',new_admin_item_path, class: "fas fa-plus fa-2x" %>
             </div>
             <table class='table table-hover table-inverse'>
@@ -24,9 +24,9 @@
                             <td><%= item.genre.name %></td>
                             <td>
                                 <% if item.is_active == true %>
-                                    <p style="color:green"><%= "販売中" %></p>
+                                    <p style="color:green; font-weight:bold;"><%= "販売中" %></p>
                                 <% else %>
-                                    <p style="color:gray"><%= "販売停止中" %></p>
+                                    <p style="color:gray; font-weight:bold"><%= "販売停止中" %></p>
                                 <% end %>
                             </td>
                         </tr>

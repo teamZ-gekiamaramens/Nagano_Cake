@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+    get 'orders/index'
+    get 'orders/show'
+  end
 #public/cart_itemのアクションを追加した===================================
   namespace :public do
     resources :cart_items, only: [:index, :create, :update, :destroy] do
@@ -53,7 +57,7 @@ Rails.application.routes.draw do
     end
 
    namespace :admin do
-     resources :orders, only: [:show, :update]
+     resources :orders, only: [:show, :update, :index]
    end
 end
 
