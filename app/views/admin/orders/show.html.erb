@@ -27,7 +27,7 @@
         <td><strong>注文ステータス</strong></td>
         <td>
           <%= form_with model: [:admin, @order], url: admin_order_path(@order), method: :patch, local: true do |f| %>
-            <%= f.select :order_status, Order.order_statuses.keys.map {|k| [I18n.t("enums.order.orde_status.#{k}"), k]} %>
+            <%= f.select :order_status, Order.order_statuses.keys.map {|k| [I18n.t("enums.order.order_status.#{k}"), k]} %>
           <%= f.submit "更新", class: 'btn btn-light btn-sm ' %>
           <% end %>
         </td>
