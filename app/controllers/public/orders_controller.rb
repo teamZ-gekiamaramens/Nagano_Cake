@@ -5,7 +5,9 @@ class Public::OrdersController < ApplicationController
      @customer = current_customer
      @delivery_address = @customer.deliveries
      @delivery = Delivery.new
-  end
+
+    end
+
 
   def create
     order = current_customer.orders.new(order_params)
