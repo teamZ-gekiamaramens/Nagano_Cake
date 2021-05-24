@@ -1,6 +1,8 @@
 class Admin::OrdersController < ApplicationController
   def index
-    #@order = Order.find(order_params)
+    @orders = Order.page(params[:page]).reverse_order.per(10)
+    #@total_quantity = @order_quantity.sum{order_item.amount}
+    @count =0
   end
 
   def show
@@ -12,7 +14,7 @@ class Admin::OrdersController < ApplicationController
   private
   
   def order_params
-    params.permit(:name, :address, :postal_code, :payment, :customer_id, :shipping, :total)
+    params.require(:order).permit(:name, :address, :postal_code, :payment, :customer_id, :shipping, :total)
   end
   
   def cart_item_params

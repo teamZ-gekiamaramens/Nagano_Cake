@@ -6,6 +6,9 @@ class Public::OrdersController < ApplicationController
      @delivery_address = @customer.deliveries
      @delivery = Delivery.new
     end
+    
+    def index
+    end
 
     def create
     order = current_customer.orders.new(order_params)

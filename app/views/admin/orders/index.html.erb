@@ -12,27 +12,30 @@
           <th>注文ステータス</th>
         </thead>
         <tbody>
-          <%# @orders.each do |order| %>
+          <% @orders.each do |order| %>
           <tr>
             <td>
-              <%= link_to "詳細画面(日時)", admin_orders_path %>
+              <%= link_to order.created_at , admin_orders_path, class: "color:black;" %>
             </td>
             <td>
-              <%#= order.name %>
+              <%= order.name %>
             </td>
             <td>
-              <%#= order.amount %>
+              <% order.order_details.each do |order_detail| %>
+                <% (@count += order_detail.quantity) %>
+              <% end %>
+              <%= @count %>
             </td>
             <td>
-              <%#= order.order_status%>
+              <%= order.order_status %>
             </td>
           </tr>
-          <%# end %>
+          <% end %>
         </tbody>
       </table>
     </div>
   </div>
   <div class="paging">
-    <%#= paginate @items %>
+    <%= paginate @orders %>
   </div>
 </div>

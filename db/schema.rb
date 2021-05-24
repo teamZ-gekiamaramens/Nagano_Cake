@@ -97,7 +97,7 @@ ActiveRecord::Schema.define(version: 2021_05_21_101809) do
     t.integer "shipping"
     t.integer "total"
     t.integer "payment"
-    t.integer "order_status"
+    t.integer "order_status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
