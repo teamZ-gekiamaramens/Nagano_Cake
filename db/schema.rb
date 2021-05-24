@@ -50,15 +50,6 @@ ActiveRecord::Schema.define(version: 2021_05_21_101809) do
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end
 
-  create_table "deliveries", force: :cascade do |t|
-    t.integer "customer_id"
-    t.string "name"
-    t.string "address"
-    t.string "postal_code"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "genres", force: :cascade do |t|
     t.string "name"
     t.datetime "create_at"
@@ -72,7 +63,7 @@ ActiveRecord::Schema.define(version: 2021_05_21_101809) do
     t.string "image_id"
     t.text "introduction"
     t.integer "price"
-    t.boolean "is_active"
+    t.boolean "is_active", default: true
     t.datetime "created_at", null: false
     t.datetime "update_at"
     t.datetime "updated_at", null: false
@@ -80,24 +71,6 @@ ActiveRecord::Schema.define(version: 2021_05_21_101809) do
   end
 
   create_table "order_details", force: :cascade do |t|
-    t.integer "order_id"
-    t.integer "item_id"
-    t.integer "quantity"
-    t.integer "price"
-    t.integer "create_status"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "orders", force: :cascade do |t|
-    t.integer "customer_id"
-    t.string "postal_code"
-    t.string "name"
-    t.string "address"
-    t.integer "shipping"
-    t.integer "total"
-    t.integer "payment"
-    t.integer "order_status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
