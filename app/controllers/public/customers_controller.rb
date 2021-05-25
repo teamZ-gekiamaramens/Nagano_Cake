@@ -30,7 +30,7 @@ def withdrawal
     #updateで登録情報をInvalidに変更
     reset_session
     #sessionIDのresetを行う
-     redirect_to customer_session_path
+     redirect_to root_path
     #指定されたrootへのpath
 end
 
