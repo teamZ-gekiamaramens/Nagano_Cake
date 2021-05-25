@@ -55,6 +55,7 @@ class Public::OrdersController < ApplicationController
        @order.postal_code = @delivery.postal_code
     end
 
+
   end
 
 
