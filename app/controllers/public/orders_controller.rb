@@ -54,7 +54,7 @@ class Public::OrdersController < ApplicationController
        @order.name = @delivery.name
        @order.postal_code = @delivery.postal_code
     end
- end
+  end
 
 
     def index
