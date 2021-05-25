@@ -25,13 +25,12 @@ before_action :authenticate_admin!
 
   private
       
-    def order_params
+  def order_params
     params.require(:order).permit(:name, :address, :postal_code, :payment, :customer_id, :shipping, :total)
+  end
 
   def order_detail_params
     params.require(:order_detail).permit(:quantity, :make_status, :price)
   end
-  def order_params
-    params.require(:order).permit(:buy_status)
-  end
+
 end
