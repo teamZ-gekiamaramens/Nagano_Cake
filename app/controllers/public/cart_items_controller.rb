@@ -1,5 +1,6 @@
 class Public::CartItemsController < ApplicationController
   def index
+
     @cart_items = CartItem.where(customer_id: current_customer.id)
     @total_price = @cart_items.sum{|cart_item|cart_item.item.price * cart_item.amount * 1.1 }
   end
