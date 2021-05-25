@@ -1,15 +1,16 @@
 class Admin::OrdersController < ApplicationController
-before_action :authenticate_admin!
+ before_action :authenticate_admin!
   def index
     @orders = Order.page(params[:page]).reverse_order.per(10)
     #@total_quantity = @order_quantity.sum{order_item.amount}
     @count =0
   end
-  
+
 
   def show
     @order = Order.find(params[:id])
     @order_details = OrderDetail.all
+
   end
 
   def update
@@ -24,14 +25,12 @@ before_action :authenticate_admin!
 
 
   private
-      
-    def order_params
+  def order_params
     params.require(:order).permit(:name, :address, :postal_code, :payment, :customer_id, :shipping, :total)
+  end
 
   def order_detail_params
     params.require(:order_detail).permit(:quantity, :make_status, :price)
   end
-  def order_params
-    params.require(:order).permit(:buy_status)
-  end
+
 end

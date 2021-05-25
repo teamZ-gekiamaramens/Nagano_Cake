@@ -6,5 +6,12 @@ class Order < ApplicationRecord
     銀行振込: 1
   }
 
-  enum order_status: {pending: 0, confirm: 1, processing: 2, preparing: 3, shipped: 4}
+  enum order_status:{
+    pending: 0, 
+    confirm: 1, 
+    processing: 2,
+    preparing: 3, 
+    shipped: 4
+    
+  }
 end
