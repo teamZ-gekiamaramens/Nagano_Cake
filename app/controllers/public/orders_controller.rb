@@ -1,12 +1,12 @@
 class Public::OrdersController < ApplicationController
-  
+
   def new
      @order = Order.new
      @customer = current_customer
      @delivery_address = @customer.deliveries
      @delivery = Delivery.new
 
-    end
+  end
 
 
   def create
@@ -55,6 +55,7 @@ class Public::OrdersController < ApplicationController
        @order.name = @delivery.name
        @order.postal_code = @delivery.postal_code
     end
+  end
 
 
 
