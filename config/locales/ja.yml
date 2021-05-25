@@ -1,12 +1,6 @@
 ja:
   enums:
     order:
-      payment_method:
-        credit: クレジットカード
-        bank: 銀行振込
-
-
-    order:
       order_status:
         pending: "入金待ち"
         confirm: "入金確認"
