@@ -25,7 +25,6 @@ class Admin::OrdersController < ApplicationController
 
 
   private
-
   def order_params
     params.require(:order).permit(:name, :address, :postal_code, :payment, :customer_id, :shipping, :total)
   end
@@ -34,6 +33,4 @@ class Admin::OrdersController < ApplicationController
     params.require(:order_detail).permit(:quantity, :make_status, :price)
   end
 
-
 end
-
