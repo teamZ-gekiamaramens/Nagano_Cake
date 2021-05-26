@@ -1,40 +1,33 @@
-<h3 class="ml-4 mt-5 d-inline-flex">ログイン</h3>
+<h2>ログイン</h2>
 <%= form_with model: @customer, url: customer_session_path, local: true do |f| %>
-<table class="ml-4">
-  <tr>
-    <td>
-     <h5>会員の方はこちらからログイン</h5>
-    </td>
-  </tr>
-  <tr>
+<table>
+<tr>
+<td><h5>会員の方はこちらからログイン</h5><td>
+<tr>
+<tr>
+  <div class="field">
    <td><%= f.label :"メールアドレス" %></td>
    <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
-  </tr>
-  <tr>
+  </div>
+</tr>
+<tr>
+  <div class="field">
     <td><%= f.label :"パスワード" %></td>
     <td><%= f.password_field :password, autocomplete: "current-password" %></td>
-  </tr>
-  <tr>
-    <td>
-      <% if devise_mapping.rememberable? %>
+  </div>
+</tr>
+  <% if devise_mapping.rememberable? %>
+    <div class="field">
       <%= f.check_box :remember_me %>
       <%= f.label :remember_me %>
-      <% end %>
-    </td>
-  </tr>
+    </div>
+  <% end %>
+
 </table>
-  <div class="ml-4">
+
+  <div class="actions">
     <%= f.submit "ログイン" %>
   </div>
-  <% end %>
-  <div class="row ml-2 mt-5">
-    <div class="col-lg-12">
-        <p class="ml-4 mb-3  d-inline-flex">登録がお済でない方</p>
-    </div>
-    <div class="col-md-7 mt-2">
-        <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-        <%= link_to "こちら", new_registration_path(resource_name), class:"ml-5" %>
-          <p class="d-lg-inline">から新規登録を行ってください。</p>
-        <% end %>
-    </div>
-</div>
+<% end %>
+
+<%= render "devise/shared/links" %>
