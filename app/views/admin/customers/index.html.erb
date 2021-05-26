@@ -1,25 +1,25 @@
 <div class="container">
   <div class="admin-customer pt-5">
     <h4 class="pb-3">会員一覧</h4>
-    <table class="table">
+    <table class="table table-bordered table-hober table-inverse">
       <tr class="table-active">
-        <th>会員ID</th>
-        <th>氏名</th>
-        <th>メールアドレス</th>
-        <th>ステータス</th>
+        <th class="border-dark">会員ID</th>
+        <th class="border-dark">氏名</th>
+        <th class="border-dark">メールアドレス</th>
+        <th class="border-dark">ステータス</th>
       </tr>
       <% @customers.each do |customer| %>
         <tr>
-          <td>
+          <td class="border-dark">
             <%= customer.id %>
           </td>
-          <td>
+          <td class="border-dark">
             <%= link_to customer.last_name+" "+customer.first_name, admin_customer_path(customer), class: "text-dark" %>
           </td>
-          <td>
+          <td class="border-dark">
             <%= customer.email %>
           </td>
-          <td>
+          <td class="border-dark">
             <% if customer.withdrawal == true %>
               <p class="text-secondary">退会済</p>
             <% else %>
