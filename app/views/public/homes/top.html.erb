@@ -9,9 +9,7 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <div class="title">
-        <h3>新着商品</h3>
-      </div>
+      <h3>新着商品</h3>
       <div class="item-list" style="text-align:center">
         <% @items.each do |item| %>
           <% if item.is_active == true %> <%# 販売ステータスが「true:販売中」の商品のみ表示する %>
@@ -31,7 +29,7 @@
     </div>
   </div>
   <div class="items_path" style="text-align:right">
-    
+
   <%= link_to "全ての商品を見る＞", public_items_path %>
   </div>
 </div>

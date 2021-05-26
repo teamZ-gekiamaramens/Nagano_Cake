@@ -3,9 +3,9 @@
         <h3>注文情報確認</h3>
     </div>
     <div class="row">
-        <div class="col-md-9">
-            <table class="table table-hover table-bordered">
-                <thead>
+      <div class="col-md-9">
+        <table class="table table-hover table-bordered">
+                <thead class="thead-light">
                     <th>商品名</th>
                     <th>単価(税入)</th>
                     <th>数量</th>
@@ -31,65 +31,70 @@
                     <% end %>
                 </tbody>
             </table>
-        </div>
-        <div class="col-md-3">
-            <table class="table table-hover table-bordered">
-                <tbody>
-                    <tr>
-                        <td>送料</td>
-                        <td>¥800</td>
-                    </tr>
-                    <tr>
-                        <td>商品合計</td>
-                        <td>¥<%= ((@total_price).to_i).to_s(:delimited) %></td>
-                    </tr>
-                    <tr>
-                        <td>請求金額</td>
-                        <td>¥<%= (((@total_price).to_i)+ 800).to_s(:delimited) %></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+      </div>
+      <div class="col-md-3">
+        <table class="table table-hover table-bordered">
+          <tbody>
+            <tr>
+              <td>送料</td>
+              <td>¥800</td>
+            </tr>
+            <tr>
+              <td>商品合計</td>
+              <td>¥<%= ((@total_price).to_i).to_s(:delimited) %></td>
+            </tr>
+            <tr>
+              <td>請求金額</td>
+              <td>¥<%= (((@total_price).to_i)+ 800).to_s(:delimited) %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
+  </div>
+<div class="container">
+  <div class="row">
+    <div class="col-ml-2">
+      <strong>支払方法</strong>
+      :<%= @order.payment %>
+    </div>
+  </div>
 </div>
-        <div class="container">
-        <div class="row">
-        <div class="col-ml-2">
-        <strong>支払方法</strong>
-        :<%= @order.payment %>
-        </div>
-        </div>
-        </div>
-<div class="col-md-10 mt-5">
-<table class="table table-hover table-bordered">
-      <thead class="thead-light">
-          <tr>
-          <th><strong>お届け先</strong>
-          <th>郵便番号</th>
-          <th>住所</th>
-          <th>名前</th>
-          </tr>
-      </thead>
-      <tbody class="border">
+<div class="container">
+  <div class="row">
+  <div class="col-md-10 mt-5 justify-content-center">
+  <table class="table table-hover table-bordered">
+    <thead class="thead-light">
+      <tr>
+       <th><strong>お届け先</strong>
+       <th>郵便番号</th>
+       <th>住所</th>
+       <th>名前</th>
+      </tr>
+    </thead>
+    <tbody class="border">
       <tr>
         <td style="width:10%"></td>
         <td style="width:10%">〒<%= @order.postal_code %></td>
         <td style="width:10%"><%= @order.address %></td>
         <td style="width:10%"><%= @order.name %></td>
       </tr>
-      </tbody>
-
-</table>
+    </tbody>
+  </table>
 </div>
 </div>
 </div>
 
-<%= form_with model:@order, url:public_orders_path, local:true do |f| %>
-      <%= f.hidden_field :payment, :value => @order.payment %>
-      <%= f.hidden_field :address, :value => @order.address %>
-      <%= f.hidden_field :name, :value => @order.name %>
-      <%= f.hidden_field :postal_code, :value => @order.postal_code %>
-      <%= f.hidden_field :total, :value => @total_price %>
-      <%= f.submit "注文確定する", class: "btn btn-success" %>
-    <% end %>
+<div class="container">
+  <div class="row">
+    <%= form_with model:@order, url:public_orders_path, local:true do |f| %>
+    <%= f.hidden_field :payment, :value => @order.payment %>
+    <%= f.hidden_field :address, :value => @order.address %>
+    <%= f.hidden_field :name, :value => @order.name %>
+    <%= f.hidden_field :postal_code, :value => @order.postal_code %>
+    <%= f.hidden_field :total, :value => @total_price %>
+    <%= f.submit "注文確定する", class: "btn btn-success" %>
+  <% end %>
 
+  </div>
+</div>

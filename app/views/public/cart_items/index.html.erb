@@ -10,23 +10,23 @@
             <br />
             <table class="table table-hover table-bordered">
                 <thead>
-                    <th>商品名</th>
-                    <th>単価(税入)</th>
-                    <th>数量</th>
-                    <th>小計</th>
-                    <th></th>
+                    <th class="border-dark">商品名</th>
+                    <th class="border-dark">単価(税入)</th>
+                    <th class="border-dark">数量</th>
+                    <th class="border-dark">小計</th>
+                    <th class="border-dark"> </th>
                 </thead>
                 <tbody>
                     <% @cart_items.each do |cart_item| %>
                         <tr>
-                            <td>
+                            <td class="border-dark">
                                 <%= attachment_image_tag cart_item.item, :image, width:"50" ,fallback: "no_image.jpg" %>
                                 <%= cart_item.item.name %>
                             </td>
-                            <td>
+                            <td class="border-dark">
                                 ¥<%= (cart_item.item.price*1.1).floor %>
                             </td>
-                            <td>
+                            <td class="border-dark">
                                 <%= form_with model: cart_item, url: public_cart_item_path(cart_item.id), local:true do |f| %>
                                     <%= f.select :amount, options_for_select((1..9), selected: cart_item.amount.to_i) %>
                                     <%# to_iメソッドは、文字列を整数に返すメソッド
@@ -34,10 +34,10 @@
                                     <%= f.submit "変更", class: 'btn btn-success' %>
                                 <% end %>
                             </td>
-                            <td>
+                            <td class="border-dark">
                                 ¥<%= ((cart_item.item.price*1.1).to_i * (cart_item.amount).to_i) %>
                             </td>
-                            <td>
+                            <td class="border-dark">
                                 <%= link_to '削除する', public_cart_item_path(cart_item.id),method: :delete, class:'btn btn-danger'  %>
                             </td>
                         </tr>
@@ -51,8 +51,8 @@
             <div class="sum-table" style="display:inline-block; text-align: right">
                 <table class="table table-hover table-bordered">
                     <tr>
-                        <th>合計金額</th>
-                        <td><%= @total_price.floor.to_s(:delimited) %></td>
+                        <th class="border-dark">合計金額</th>
+                        <td class="border-dark">¥<%= @total_price.floor.to_s(:delimited) %></td>
                     </tr>
                 </table>
             </div>

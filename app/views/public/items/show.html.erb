@@ -1,19 +1,16 @@
 
 <div class="container">
-    <div class="title">
         <h3>商品詳細</h3>
-</div>
     <div class="row">
-        <div class="col-lg-4">
-            
+        <div class="col-lg-4 pt-5">
             <%= attachment_image_tag @item, :image, width:"200", fallback: "no_image.jpg" %>
         </div>
-        <div class="col-lg-8">
+        <div class="col-lg-8 pt-5">
             <h3><%= @item.name %></h3>
             <p><%= @item.introduction %></p>
             <h3>¥<%= (@item.price*1.1).floor %>(税込)</h3>
             <%#= @item.select :quantity, [1,2,3,4,5,6,7,8,9] %>
-            
+
             <% if customer_signed_in? %><%# ユーザーがログインしているか？%>
             <%#ログインしていたら%>
             <div class="item-decide">
@@ -21,7 +18,7 @@
                     <%= f.hidden_field :item_id, :value => @item.id %>
                     <%# hidden_field : 隠れているが必要な要素を送信するための %>
                     <%= f.select :amount, (1..9).to_a ,{include_blank: '-個数を選択して下さい-'}  %>
-                    
+
                     <%= f.submit 'カートに入れる', class: "btn btn-success" %>
                     <!--カートアイテムのpathに飛ぶようにする。(5/20時点では商品リストに飛ぶ)-->
                 <% end %>
