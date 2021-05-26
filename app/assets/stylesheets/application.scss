@@ -1,0 +1,109 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+@import "bootstrap";
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+}
+
+.title {
+    display: inline-block;
+    margin: 10px;
+    padding: 0, 30px;;
+}
+.title-logo img{
+  height: 200px;
+}
+.new-genre{
+    display: inline-block;
+    margin: 30px;
+}
+
+.add-item{
+    float: right;
+}
+
+.header {
+  background-image: url("wood.jpg");
+  background-size: cover;
+}
+
+// mainではなくbodyに背景画像などを設定しないと空白が開いてしまう
+body{
+  height: 100%;
+  background-image: url("wood.jpg");
+  background-color: rgba(255, 255, 255, 0.5);
+  background-blend-mode: lighten;
+  background-size: cover;
+
+}
+
+.footer{
+  width: 100%;
+  background-image: url("wood.jpg");
+  background-size: auto;
+  text-align: center;
+  padding: 10px 0;
+  position: absolute;/*←絶対位置*/
+  bottom: 0; /*下に固定*/
+}
+
+.font {
+  font-family: Chalkduster, "Bradley Hand", Courier, "Segoe Print", sans-serif;
+}
+.nav-item{
+  padding-left: 10px ;
+}
+
+.item-link{
+  padding: 30px;
+}
+
+body {
+font-family: 'HanziPen SC' ;
+}
+.about-introduction{
+  height: 300px;
+}
+.about-introduction h5{
+  line-height: 30px;
+}
+.tya{
+  color: #996633;
+}
+
+.container1{
+  height:500px;
+  width: 100%;
+}
+
+.image1 {
+  background-image: url(cake2.jpg);
+}
+.image2 {
+  background-image: url(cake2.jpg);
+}
+.image3 {
+  background-image: url(logo.jpg);
+}
+.image4 {
+  background-image: url(cake2.jpg);
+}

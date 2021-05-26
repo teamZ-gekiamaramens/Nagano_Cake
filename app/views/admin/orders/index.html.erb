@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row">
+    <div class="title">
+      <h3>注文履歴一覧</h3>
+    </div>
+    <div class="col-md-12">
+      <table class="table table-bordered table-hober">
+        <thead>
+          <th class="border-dark">購入日時</th>
+          <th class="border-dark">購入者</th>
+          <th class="border-dark">注文個数</th>
+          <th class="border-dark">注文ステータス</th>
+        </thead>
+        <tbody>
+          <% @orders.each do |order| %>
+          <tr>
+            <td class="border-dark">
+              <%= link_to order.created_at.strftime("%Y/%m/%d %H:%M:%S") , admin_order_path(order.id), class: "color:black;" %>
+            </td>
+            <td class="border-dark">
+              <%= order.name %>
+            </td>
+            <td class="border-dark">
+              <% order.order_details.each do |order_detail| %>
+                <% (@count += order_detail.quantity) %>
+              <% end %>
+              <%= @count %>
+            </td>
+            <td class="border-dark">
+              <%= order.order_status_i18n %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="paging">
+    <%= paginate @orders %>
+  </div>
+</div>

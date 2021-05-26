@@ -1,0 +1,45 @@
+<div class="container">
+    <div class="title">
+        <h3>商品詳細</h3>
+    </div>
+
+    <div class="row">
+
+        <div class="col-lg-4">
+            <%= attachment_image_tag @item, :image, width:"200" ,fallback: "no_image.jpg" %>
+        </div>
+        <div class="col-lg-8">
+            <table class='table table-hover table-inverse'>
+                <tr>
+                    <td>商品名</td>
+                    <td><%= @item.name %></td>
+                </tr>
+                <tr>
+                    <td>商品説明</td>
+                    <td><%= @item.introduction %></td>
+                </tr>
+                <tr>
+                    <td>ジャンル</td>
+                    <td><%= @item.genre.name%></td>
+                </tr>
+                <tr>
+                    <td>税込価格<br />(税抜価格)</td>
+                    <td><%= (@item.price*1.1).floor %>(<%= @item.price %>)円</td><!--税込み価格を記載のこと-->
+                </tr>
+                <tr>
+                    <td>販売ステータス</td>
+                    <td>
+                        <% if @item.is_active == true %>
+                            <p style="color:green"><%= "販売中" %></p>
+                        <% else %>
+                            <p style="color:gray"><%= "販売停止中" %></p>
+                        <% end %>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="pl-4">
+            <%= link_to '編集する', edit_admin_item_path(@item.id), class: "btn btn-success" %>
+        </div>
+    </div>
+</div>

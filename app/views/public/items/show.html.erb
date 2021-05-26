@@ -1,0 +1,33 @@
+
+<div class="container">
+        <h3>商品詳細</h3>
+    <div class="row">
+        <div class="col-lg-4 pt-5">
+            <%= attachment_image_tag @item, :image, width:"200", fallback: "no_image.jpg" %>
+        </div>
+        <div class="col-lg-8 pt-5">
+            <h3><%= @item.name %></h3>
+            <p><%= @item.introduction %></p>
+            <h3>¥<%= (@item.price*1.1).floor %>(税込)</h3>
+            <%#= @item.select :quantity, [1,2,3,4,5,6,7,8,9] %>
+
+            <% if customer_signed_in? %><%# ユーザーがログインしているか？%>
+            <%#ログインしていたら%>
+            <div class="item-decide">
+                <%= form_with model:@cart_item, url:public_cart_items_path, local: true do |f| %>
+                    <%= f.hidden_field :item_id, :value => @item.id %>
+                    <%# hidden_field : 隠れているが必要な要素を送信するための %>
+                    <%= f.select :amount, (1..9).to_a ,{include_blank: '-個数を選択して下さい-'}  %>
+
+                    <%= f.submit 'カートに入れる', class: "btn btn-success" %>
+                    <!--カートアイテムのpathに飛ぶようにする。(5/20時点では商品リストに飛ぶ)-->
+                <% end %>
+            </div>
+            <% else %><%# ログインしていなければ %>
+                <br />
+                <%= link_to '新規登録はこちら', new_customer_registration_path , class: "btn btn-primary"%>
+                <%= link_to 'ログインはこちら', new_customer_session_path, class: "btn btn-success" %>
+            <% end %>
+        </div>
+    </div>
+</div>

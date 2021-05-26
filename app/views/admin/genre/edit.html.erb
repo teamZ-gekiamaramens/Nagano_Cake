@@ -1,0 +1,22 @@
+<div class ="container">
+    <div class ="row">
+        <div class="col-lg-12">
+            <div class="add-genre">
+                <div class="title">
+                    <h3>ジャンル編集</h3>
+                </div>
+                
+                <br />
+                <%= form_with(model: @genre, url:admin_genre_path) do |f| %>
+                    <table>
+                        <th><p>ジャンル名</p></th>
+                        <th><%= f.text_field :name, autofocus: true %></th>
+                        <th><%= f.submit "変更を保存", class: "btn btn-success" %></th>
+                    </table>
+                    
+                    
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>
