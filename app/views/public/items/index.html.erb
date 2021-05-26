@@ -5,7 +5,7 @@
                 <h2><span style="font-weight:bold">商品一覧</span></h2>
                 <p>(全<%= @quantity %>件)</p>
             </div>
-            <div class="item-list" style="text-align:center">
+            <div  style="text-align:center">
                 <% @items.each do |item| %>
                     <% if item.is_active == true %> <%# 販売ステータスが「true:販売中」の商品のみ表示する %>
                         <div class="item-link" style="display:inline-block">
