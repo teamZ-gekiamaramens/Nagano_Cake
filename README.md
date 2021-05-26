@@ -12,5 +12,7 @@ https://docs.google.com/spreadsheets/d/1rEEkO_EQ-a-1N3DuAnzMtS8C1gOmtmJL/edit#gi
 ● 送料は1配送につき全国一律800円。<br>
 ● 友人や家族へのプレゼントなど、注文者の住所以外にも商品を発送できる。<br>
 ● 支払方法はクレジットカード、銀行振込から選択できる。<br>
+## 開発環境
+Ruby on Rails rails 5.2.6
 ## 開発者
 ・TJ　・そや　・ようへい　・ちから
